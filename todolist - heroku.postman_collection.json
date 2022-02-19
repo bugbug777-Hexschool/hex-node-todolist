@@ -1,0 +1,147 @@
+{
+	"info": {
+		"_postman_id": "0b11d02b-a382-4975-a428-761a1a1de3ea",
+		"name": "todolist - heroku",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "todo - 取得所有資料",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://sleepy-journey-65432.herokuapp.com/todos",
+					"protocol": "https",
+					"host": [
+						"sleepy-journey-65432",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"todos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "todo - 新增一筆資料",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"haha\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sleepy-journey-65432.herokuapp.com/todos",
+					"protocol": "https",
+					"host": [
+						"sleepy-journey-65432",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"todos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "todo - 刪除所有資料",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"haha\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sleepy-journey-65432.herokuapp.com/todos",
+					"protocol": "https",
+					"host": [
+						"sleepy-journey-65432",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"todos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "todo - 刪除一筆資料",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"haha\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sleepy-journey-65432.herokuapp.com/todos/087ffe2e-c029-4991-bfca-33117710126e",
+					"protocol": "https",
+					"host": [
+						"sleepy-journey-65432",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"todos",
+						"087ffe2e-c029-4991-bfca-33117710126e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "todo - 編輯一筆資料",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"該我了吧2\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sleepy-journey-65432.herokuapp.com/todos/dd34e3e3-b2ec-4f73-b06b-fabf6bebbc03",
+					"protocol": "https",
+					"host": [
+						"sleepy-journey-65432",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"todos",
+						"dd34e3e3-b2ec-4f73-b06b-fabf6bebbc03"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
