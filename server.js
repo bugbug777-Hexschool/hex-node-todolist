@@ -1,5 +1,6 @@
 const http = require('http');
 const { v4: uuidv4 } = require('uuid');
+const headers = require('./header/baseHeader');
 const errHandler = require('./errHandler');
 
 const todos = [
@@ -10,19 +11,13 @@ const todos = [
 ]
 
 const requestListener = (req, res) => {
-  const header = {
-    'Access-Control-Allow-Headers': 'Conten-Type, Content-Length, Authorization, X-Requested-With',
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET, POST, DELETE, PATCH, OPTIONS',
-    'Content-Type': 'application/json'
-  };
   let body = '';
   req.on('data', chunk => {
     body += chunk;
   })
 
   if (req.url === '/todos' && req.method === 'GET') {
-    res.writeHead(200, header);
+    res.writeHead(200, headers);
     res.write(JSON.stringify({
       status: 'success',
       data: todos
@@ -38,23 +33,23 @@ const requestListener = (req, res) => {
         }
         if (title !== undefined) {
           todos.push(obj);
-          res.writeHead(200, header);
+          res.writeHead(200, headers);
           res.write(JSON.stringify({
             status: 'success',
             data: todos,
           }));
           res.end();
         } else {
-          errHandler(res, header, 400, '資料格式有誤')
+          errHandler(res, headers, 400, '資料格式有誤')
         }
       }catch{
-        errHandler(res, header, 400, '這不是 JSON')
+        errHandler(res, headers, 400, '這不是 JSON')
       }
     })
     
   } else if (req.url === '/todos' && req.method === 'DELETE'){
     todos.length = 0;
-    res.writeHead(200, header);
+    res.writeHead(200, headers);
     res.write(JSON.stringify({
       status: 'success',
       data: todos
@@ -65,14 +60,14 @@ const requestListener = (req, res) => {
     const index = todos.findIndex(item => item.id === id);
     if (index !== -1) {
       todos.splice(index, 1);
-      res.writeHead(200, header);
+      res.writeHead(200, headers);
       res.write(JSON.stringify({
         status: 'success',
         data: todos
       }));
       res.end();
     } else {
-      errHandler(res, header, 400, '請確認 id 是否正確');
+      errHandler(res, headers, 400, '請確認 id 是否正確');
     }
     
   } else if (req.url.startsWith('/todos/') && req.method === 'PATCH'){
@@ -88,27 +83,27 @@ const requestListener = (req, res) => {
           }
           if (title !== undefined) {
             todos[index] = obj;
-            res.writeHead(200, header);
+            res.writeHead(200, headers);
             res.write(JSON.stringify({
               status: 'success',
               data: todos,
             }));
             res.end();
           } else {
-            errHandler(res, header, 400, '資料格式有誤')
+            errHandler(res, headers, 400, '資料格式有誤')
           }
         }catch{
-          errHandler(res, header, 400, '這不是 JSON')
+          errHandler(res, headers, 400, '這不是 JSON')
         }
       })
     } else {
-      errHandler(res, header, 400, '請確認 id 是否正確');
+      errHandler(res, headers, 400, '請確認 id 是否正確');
     }
   } else if (req.method === 'OPTIONS'){
-    res.writeHead(200, header);
+    res.writeHead(200, headers);
     res.end();
   } else {
-    errHandler(res, header, 404, 'Not Found!!')
+    errHandler(res, headers, 404, 'Not Found!!')
   }
 }
 
