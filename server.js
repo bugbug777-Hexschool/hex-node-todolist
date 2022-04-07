@@ -40,10 +40,10 @@ const requestListener = (req, res) => {
           }));
           res.end();
         } else {
-          errHandler(res, headers, 400, '資料格式有誤')
+          errHandler(res, 400, '資料格式有誤')
         }
       }catch{
-        errHandler(res, headers, 400, '這不是 JSON')
+        errHandler(res, 400, '這不是 JSON')
       }
     })
     
@@ -67,7 +67,7 @@ const requestListener = (req, res) => {
       }));
       res.end();
     } else {
-      errHandler(res, headers, 400, '請確認 id 是否正確');
+      errHandler(res, 400, '請確認 id 是否正確');
     }
     
   } else if (req.url.startsWith('/todos/') && req.method === 'PATCH'){
@@ -90,20 +90,20 @@ const requestListener = (req, res) => {
             }));
             res.end();
           } else {
-            errHandler(res, headers, 400, '資料格式有誤')
+            errHandler(res, 400, '資料格式有誤')
           }
         }catch{
-          errHandler(res, headers, 400, '這不是 JSON')
+          errHandler(res, 400, '這不是 JSON')
         }
       })
     } else {
-      errHandler(res, headers, 400, '請確認 id 是否正確');
+      errHandler(res, 400, '請確認 id 是否正確');
     }
   } else if (req.method === 'OPTIONS'){
     res.writeHead(200, headers);
     res.end();
   } else {
-    errHandler(res, headers, 404, 'Not Found!!')
+    errHandler(res, 404, 'Not Found!!')
   }
 }
 

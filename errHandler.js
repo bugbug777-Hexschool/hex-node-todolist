@@ -1,5 +1,7 @@
-function errHandler(res, header, statusCode, message) {
-  res.writeHead(statusCode, header);
+const headers = require('./header/baseHeader');
+
+function errHandler(res, statusCode, message) {
+  res.writeHead(statusCode, headers);
   res.write(JSON.stringify({
     status: 'false',
     message
